@@ -116,3 +116,7 @@ issues:
         - funlen
         - gomnd
         - gocritic
+
+    - path: ffmpeg\.go
+      linters:
+        - gosec

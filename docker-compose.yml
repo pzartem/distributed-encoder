@@ -3,8 +3,8 @@ version: '3'
 services:
   server:
     build:
-      context: ../
-      dockerfile: ./deployment/Dockerfile
+      context: ""
+      dockerfile: deployment/Dockerfile
       args:
         cmd: server
     image: server:latest
@@ -15,13 +15,12 @@ services:
       - 1111:1111
     environment:
       - ADDR=:1111
-      - INPUT_PATH=/mnt/videos
       - RESULT_PATH=/mnt/videos
 
   worker:
     build:
-      context: ../
-      dockerfile: ./deployment/Dockerfile
+      context: ""
+      dockerfile: deployment/Dockerfile
       args:
         cmd: client
     image: worker:latest

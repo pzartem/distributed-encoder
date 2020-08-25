@@ -6,6 +6,7 @@ import (
 
 	"github.com/sethvargo/go-envconfig"
 
+	"distributed-encoder/transcoder"
 	"distributed-encoder/worker"
 )
 
@@ -26,17 +27,17 @@ func realMain() error {
 	}
 
 	client := worker.NewClient(
-		cfg.ServerAddr+"/work/ack",
+		cfg.ServerAddr+"/work/jobs",
 		cfg.ServerAddr+"/work/result",
 	)
 
-	var encoder worker.VideoEncoder
-
-	w, err := worker.New(client, encoder)
+	var encoder transcoder.Transcoder
+	w, err := worker.New(client, &encoder)
 	if err != nil {
 		return err
 	}
 
+	log.Println("Starting client")
 	if err := w.Start(); err != nil {
 		return err
 	}

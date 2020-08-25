@@ -28,12 +28,11 @@ docker-build:
 		-t $(CMD) \
 		-f $(DEPLOY_ROOT)/Dockerfile .
 
-ffmpeg-crop-multiple:
-	mkfifo /tmp/pipe1.yuv && mkfifo /tmp/pipe2.yuv && ffmpeg -i ~/LetinVR_test_1.mp4 -f rawvideo \
-		-filter_complex \
-		"[0:v]crop=w=1920:h=1080:x=0:y=0[out1];[out1]format=pix_fmts=yuv420p[out1];[0:v]crop=w=1920:h=1080:x=1920:y=1080[out2];[out2]format=pix_fmts=yuv420p[out2]" \
-		-map [out1]  /tmp/pipe1.yuv \
-		-map [out2]  /tmp/pipe2.yuv
+compose-build:
+	docker-compose build
+
+compose-run:
+	docker-compose up --scale worker=4
 
 .PHONY: build run test lint docker-build
 

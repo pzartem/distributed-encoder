@@ -23,7 +23,8 @@ func (s *FSObjectStore) WriteObject(key string, src io.Reader) error {
 	defer writer.Flush()
 
 	if _, err := io.Copy(writer, src); err != nil {
-		s.Remove(key)
+		log.Println("Error store: ", err)
+		s.Remove(f.Name())
 
 		return err
 	}

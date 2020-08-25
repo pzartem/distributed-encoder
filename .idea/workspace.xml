@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3a7d023-bb5e-48fd-85e8-3bdbbaf7bd99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.golangci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.golangci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/client/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/client/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/server/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/store.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transcoder/ffmpeg.go" beforeDir="false" afterPath="$PROJECT_DIR$/transcoder/ffmpeg.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/worker/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/worker/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worker/client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/worker/client_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/worker/worker.go" beforeDir="false" afterPath="$PROJECT_DIR$/worker/worker.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +46,7 @@
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="/usr/local/Cellar/go/1.14.3/libexec" />
+  <component name="GOROOT" path="/usr/lib/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -78,70 +75,79 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ffmpeg" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/ffmpeg" />
       <recent name="$PROJECT_DIR$/pkg" />
       <recent name="$PROJECT_DIR$/transcoder" />
       <recent name="$PROJECT_DIR$/worker" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build distributed-encoder/cmd/server">
-    <configuration name="go build distributed-encoder/cmd/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test distributed-encoder/worker">
+    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="distributed-encoder" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/worker" />
+      <framework value="gotest" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/cmd/client/main.go" />
-      <package value="distributed-encoder/cmd/client" />
+      <package value="distributed-encoder/worker" />
       <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build distributed-encoder/cmd/server" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="distributed-encoder" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/worker" />
+      <framework value="gotest" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/cmd/server/main.go" />
-      <package value="distributed-encoder/cmd/server" />
+      <package value="distributed-encoder/worker" />
       <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="docker-build" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="docker-build" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
+    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="distributed-encoder" />
+      <working_directory value="$PROJECT_DIR$/worker" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="distributed-encoder/worker" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="deployment/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="sourceFilePath" value="deployment/Dockerfile" />
-        </settings>
-      </deployment>
+    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (5)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="distributed-encoder" />
+      <working_directory value="$PROJECT_DIR$/worker" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="distributed-encoder/worker" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="deployment.server: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="server" />
-            </list>
-          </option>
-          <option name="sourceFilePath" value="deployment/docker-compose.yml" />
-        </settings>
-      </deployment>
+    <configuration name="go test distributed-encoder/worker" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="distributed-encoder" />
+      <working_directory value="$PROJECT_DIR$/worker" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="distributed-encoder/worker" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build distributed-encoder/cmd/server" />
-        <item itemvalue="Go Build.go build distributed-encoder/cmd/client" />
-        <item itemvalue="Docker.deployment.server: Compose Deployment" />
-        <item itemvalue="Docker.deployment/Dockerfile" />
-        <item itemvalue="Makefile.docker-build" />
+        <item itemvalue="Go Test.go test distributed-encoder/worker" />
+        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (5)" />
+        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (4)" />
+        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (3)" />
+        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (2)" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f3a7d023-bb5e-48fd-85e8-3bdbbaf7bd99" name="Default Changelist" comment="" />
@@ -153,16 +159,17 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="558" y="428" key="#GOROOT" timestamp="1598292226552">
-      <screen x="0" y="23" width="1536" height="937" />
+    <state x="698" y="483" key="#GOROOT" timestamp="1598300478573">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="558" y="428" key="#GOROOT/0.23.1536.937@0.23.1536.937" timestamp="1598292226552" />
+    <state x="698" y="483" key="#GOROOT/0.28.1920.1052@0.28.1920.1052" timestamp="1598300478573" />
     <state x="716" y="374" width="477" height="355" key="#New_Docker_Connection" timestamp="1598179788933">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
@@ -171,48 +178,48 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="661" y="354" width="605" height="387" key="#com.intellij.fileTypes.FileTypeChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1598216437132" />
-    <state width="1874" height="344" key="GridCell.Tab.0.bottom" timestamp="1598270363580">
+    <state width="1874" height="469" key="GridCell.Tab.0.bottom" timestamp="1598317304587">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.bottom/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363580" />
-    <state width="1874" height="344" key="GridCell.Tab.0.center" timestamp="1598270363580">
+    <state width="1874" height="469" key="GridCell.Tab.0.bottom/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
+    <state width="1874" height="469" key="GridCell.Tab.0.center" timestamp="1598317304587">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.center/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363580" />
-    <state width="1874" height="344" key="GridCell.Tab.0.left" timestamp="1598270363580">
+    <state width="1874" height="469" key="GridCell.Tab.0.center/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
+    <state width="1874" height="469" key="GridCell.Tab.0.left" timestamp="1598317304587">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.left/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363580" />
-    <state width="1874" height="344" key="GridCell.Tab.0.right" timestamp="1598270363580">
+    <state width="1874" height="469" key="GridCell.Tab.0.left/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
+    <state width="1874" height="469" key="GridCell.Tab.0.right" timestamp="1598317304587">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.0.right/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363580" />
-    <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1598270363581">
+    <state width="1874" height="469" key="GridCell.Tab.0.right/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1598312358285">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.bottom/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363581" />
-    <state width="1874" height="344" key="GridCell.Tab.1.center" timestamp="1598270363581">
+    <state width="1874" height="344" key="GridCell.Tab.1.bottom/0.28.1920.1052@0.28.1920.1052" timestamp="1598312358285" />
+    <state width="1874" height="344" key="GridCell.Tab.1.center" timestamp="1598312358285">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.center/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363581" />
-    <state width="1874" height="344" key="GridCell.Tab.1.left" timestamp="1598270363580">
+    <state width="1874" height="344" key="GridCell.Tab.1.center/0.28.1920.1052@0.28.1920.1052" timestamp="1598312358285" />
+    <state width="1874" height="344" key="GridCell.Tab.1.left" timestamp="1598312358285">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.left/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363580" />
-    <state width="1874" height="344" key="GridCell.Tab.1.right" timestamp="1598270363581">
+    <state width="1874" height="344" key="GridCell.Tab.1.left/0.28.1920.1052@0.28.1920.1052" timestamp="1598312358285" />
+    <state width="1874" height="344" key="GridCell.Tab.1.right" timestamp="1598312358285">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="344" key="GridCell.Tab.1.right/0.28.1920.1052@0.28.1920.1052" timestamp="1598270363581" />
+    <state width="1874" height="344" key="GridCell.Tab.1.right/0.28.1920.1052@0.28.1920.1052" timestamp="1598312358285" />
     <state x="398" y="95" key="SettingsEditor" timestamp="1598292328880">
       <screen x="0" y="23" width="1536" height="937" />
     </state>
     <state x="398" y="95" key="SettingsEditor/0.23.1536.937@0.23.1536.937" timestamp="1598292328880" />
     <state x="449" y="189" key="SettingsEditor/0.28.1920.1052@0.28.1920.1052" timestamp="1598179777680" />
-    <state x="642" y="415" width="297" height="151" key="VCS.ChangelistChooser" timestamp="1598292936406">
-      <screen x="0" y="23" width="1536" height="937" />
+    <state x="803" y="468" width="297" height="151" key="VCS.ChangelistChooser" timestamp="1598309528299">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="642" y="415" width="297" height="151" key="VCS.ChangelistChooser/0.23.1536.937@0.23.1536.937" timestamp="1598292936406" />
-    <state x="803" y="468" width="303" height="168" key="VCS.ChangelistChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1598289683517" />
+    <state x="803" y="468" width="303" height="168" key="VCS.ChangelistChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1598309528299" />
     <state x="687" y="400" width="536" height="304" key="cloudConfig.PluginsDialog" timestamp="1598088887678">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
@@ -229,9 +236,13 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="652" y="108" width="615" height="891" key="find.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1598115560984" />
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1598290540583">
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1598315029226">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1598290540583" />
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1598315029226" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/distributed_encoder$go_test_distributed_encoder_transcoder.out" NAME="go test distributed-encoder/transcoder Coverage Results" MODIFIED="1598313451988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/distributed_encoder$go_test_distributed_encoder_worker.out" NAME="go test distributed-encoder/worker Coverage Results" MODIFIED="1598317090764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

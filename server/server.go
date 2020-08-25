@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"math"
+	"path"
 	"time"
 
 	"distributed-encoder/transcoder"
@@ -40,7 +41,19 @@ type Store interface {
 
 // TileStreamer is a real-time stream of the tile
 type TileStreamer interface {
-	CropStream(args transcoder.CropArgs) (io.ReadCloser, error)
+	StreamTile(args *transcoder.CropArgs) (io.ReadCloser, error)
+}
+
+type tileJob struct {
+	TileNum int
+	File    string
+	Path    string
+
+	PosX int
+	PosY int
+
+	Width  int
+	Height int
 }
 
 // Config represents available server configuration
@@ -60,15 +73,15 @@ type Server struct {
 	tileStreamer TileStreamer
 
 	dispatchTimeout time.Duration
-	jobChan         chan CropArgs
+	jobChan         chan tileJob
 }
 
-// New creates a server
+// New creates a new server
 func New(cfg Config) (*Server, error) {
-	if cfg.TileStreamer != nil {
+	if cfg.TileStreamer == nil {
 		return nil, fmt.Errorf("tilestreamer is empty")
 	}
-	if cfg.Store != nil {
+	if cfg.Store == nil {
 		return nil, fmt.Errorf("store is empty")
 	}
 	if cfg.DispatchTimeout != time.Duration(0) {
@@ -80,21 +93,21 @@ func New(cfg Config) (*Server, error) {
 		tileStreamer:    cfg.TileStreamer,
 		dispatchTimeout: cfg.DispatchTimeout,
 
-		jobChan: make(chan CropArgs),
+		jobChan: make(chan tileJob),
 	}
 
 	return s, nil
 }
 
 // TriggerWork triggers video encoding work
-func (s *Server) TriggerWork(encodeRequest EncodeVideoRequest) error {
-	if s.store.HasObject(encodeRequest.FilePath) {
-		return fmt.Errorf("file: %s is not found in a storage", encodeRequest.FilePath)
+func (s *Server) TriggerWork(request EncodeVideoRequest) error {
+	log.Printf("Work is triggered %+v", request)
+	if !s.store.HasObject(request.FilePath) {
+		return fmt.Errorf("file: %s is not found in a storage", request.FilePath)
 	}
-
 	go func() {
-		buildCropJobs(encodeRequest, func(job CropArgs) {
-			log.Printf("[Job] enqueued: %s-%v", job.FilePath, job.TileNum)
+		buildCropJobs(request, func(job tileJob) {
+			log.Printf("[Job] enqueued: %s-%v", job.Path, job.TileNum)
 			s.jobChan <- job
 		})
 	}()
@@ -107,15 +120,19 @@ func (s *Server) TriggerWork(encodeRequest EncodeVideoRequest) error {
 func (s *Server) Dispatch() (*worker.Job, error) {
 	select {
 	case job := <-s.jobChan:
-		log.Printf("Dispatching job: %v", job.TileNum)
-
-		stream, err := s.tileStreamer.Stream(job)
+		log.Printf("Dispatching job: %s, tile: %v", job.Path, job.TileNum)
+		stream, err := s.tileStreamer.StreamTile(&transcoder.CropArgs{
+			Input:  job.Path,
+			X:      job.PosX,
+			Y:      job.PosY,
+			Height: job.Height,
+			Width:  job.Width,
+		})
 		if err != nil {
 			return nil, err
 		}
-
 		return &worker.Job{
-			TileName: fmt.Sprint(job.FilePath, "_", job.TileNum),
+			TileName: fmt.Sprint(job.File, "_", job.TileNum),
 			Width:    job.Width,
 			Height:   job.Height,
 			Src:      stream,
@@ -133,22 +150,30 @@ func (s *Server) AcceptResult(name string, input io.Reader) error {
 	return nil
 }
 
-func buildCropJobs(videoFile EncodeVideoRequest, jobFunc func(job CropArgs)) {
-	cols, rows := calcColumnRows(videoFile.Tiles)
+func (s *Server) Close() error {
+	close(s.jobChan)
+	return nil
+}
 
-	wRes := videoFile.Width / cols
-	hRes := videoFile.Height / rows
+func buildCropJobs(req EncodeVideoRequest, jobFunc func(tileJob)) {
+	_, file := path.Split(req.FilePath)
+
+	cols, rows := calcColumnRows(req.Tiles)
+
+	wRes := req.Width / cols
+	hRes := req.Height / rows
 
 	tileNum := 0
-	for x := 0; x < videoFile.Width; x += wRes {
-		for y := 0; y < videoFile.Height; y += hRes {
-			jobFunc(CropArgs{
-				TileNum:  tileNum,
-				FilePath: videoFile.FilePath,
-				X:        x,
-				Y:        y,
-				Height:   hRes,
-				Width:    wRes,
+	for x := 0; x < req.Width; x += wRes {
+		for y := 0; y < req.Height; y += hRes {
+			jobFunc(tileJob{
+				TileNum: tileNum,
+				File:    file,
+				Path:    req.FilePath,
+				PosX:    x,
+				PosY:    y,
+				Width:   wRes,
+				Height:  hRes,
 			})
 			tileNum++
 		}

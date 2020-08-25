@@ -31,14 +31,13 @@ func realMain() error {
 		cfg.ServerAddr+"/work/result",
 	)
 
-	var encoder transcoder.Transcoder
-	w, err := worker.New(client, &encoder)
+	w, err := worker.New(client, transcoder.New())
 	if err != nil {
 		return err
 	}
 
 	log.Println("Starting client")
-	if err := w.Start(); err != nil {
+	if err := w.Start(context.Background()); err != nil {
 		return err
 	}
 	return nil

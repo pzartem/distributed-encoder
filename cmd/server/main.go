@@ -38,7 +38,7 @@ func realMain() error {
 		Store: &server.FSObjectStore{
 			Path: cfg.ResultPath,
 		},
-		TileStreamer: &transcoder.Transcoder{},
+		TileStreamer: transcoder.New(),
 	})
 	if err != nil {
 		log.Fatalf("Can't start server service: %s", err)
@@ -46,13 +46,13 @@ func realMain() error {
 	}
 	defer srv.Close()
 
-	workHandler := handler{s: srv}
+	workHandler := server.HTTPHandler{Service: srv}
 
 	router := httprouter.New()
 
-	router.HandlerFunc(http.MethodPost, "/work/jobs", workHandler.dispatch)
-	router.HandlerFunc(http.MethodPost, "/work/result", workHandler.acceptResult)
-	router.HandlerFunc(http.MethodPost, "/work/trigger", workHandler.trigger)
+	router.HandlerFunc(http.MethodPost, "/work/jobs", workHandler.Dispatch)
+	router.HandlerFunc(http.MethodPost, "/work/result", workHandler.AcceptResult)
+	router.HandlerFunc(http.MethodPost, "/work/trigger", workHandler.Trigger)
 
 	log.Println("HTTP Server started on addr: ", cfg.Addr)
 	if err := http.ListenAndServe(cfg.Addr, router); err != nil {

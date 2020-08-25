@@ -36,16 +36,16 @@ func NewClient(pollEndpoint, resultEndpoint string) *HTTPClient {
 }
 
 var (
-	// ErrCancelled happen when polling is cancelled
-	ErrCancelled = errors.New("cancelled")
+	// ErrCancelled happen when polling is canceled
+	ErrCancelled = errors.New("canceled")
 )
 
 // Subscribe subscribes for the jobs
 func (c *HTTPClient) Subscribe(ctx context.Context, handlerFunc HandleJobFunc) error {
 	for {
 		select {
-		case <- ctx.Done():
-			log.Println("[poll] cancelled")
+		case <-ctx.Done():
+			log.Println("[poll] canceled")
 			return ErrCancelled
 		default:
 			if err := c.pollingFlow(handlerFunc); err != nil {

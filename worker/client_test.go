@@ -58,11 +58,12 @@ func TestHTTPClient_Subscribe(t *testing.T) {
 	defer server.Close()
 
 	c := HTTPClient{
-		client:         server.Client(),
+		client:       server.Client(),
 		pollEndpoint: server.URL + "/work/poll",
 	}
 
-	ctx, _ := context.WithTimeout(context.Background(), 1 * time.Millisecond)
+	ctx, cancelFn := context.WithTimeout(context.Background(), 1*time.Millisecond)
+	defer cancelFn()
 
 	err := c.Subscribe(ctx, func(job *Job) error {
 		expected := testJob
@@ -74,7 +75,6 @@ func TestHTTPClient_Subscribe(t *testing.T) {
 	// got more than 1 requestCount
 	require.Equal(t, 1, requestCount)
 	require.Equal(t, ErrCancelled, err)
-
 }
 
 func TestHTTPClient_SendResult(t *testing.T) {

@@ -17,8 +17,8 @@ type Transcoder struct {
 	cropCmdFunc   func(*CropArgs) *exec.Cmd
 }
 
-func New() Transcoder  {
-	return Transcoder{
+func New() *Transcoder {
+	return &Transcoder{
 		encodeCmdFunc: encodeVideo,
 		cropCmdFunc:   cropVideo,
 	}
@@ -55,15 +55,15 @@ func runForget(cmd *exec.Cmd) (io.ReadCloser, error) {
 // CropArgs for crop stream
 type CropArgs struct {
 	// input for the src
-	Input  string
+	Input string
 	// X position
-	X      int
+	X int
 	// Y position
-	Y      int
+	Y int
 	// Height pixel resolution
 	Height int
 	// Width pixel resolution
-	Width  int
+	Width int
 }
 
 func cropVideo(ops *CropArgs) *exec.Cmd {
@@ -79,7 +79,7 @@ type EncodeArgs struct {
 	// Height resolution
 	Height int
 	// Width pixel resolution
-	Width  int
+	Width int
 }
 
 // encodeVideo command using ffmpeg

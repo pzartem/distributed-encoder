@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"bufio"
@@ -8,28 +8,34 @@ import (
 	"mime"
 	"net/http"
 
-	"distributed-encoder/server"
 	"distributed-encoder/worker"
 )
 
-type handler struct {
-	s *server.Server
+type Service interface {
+	Dispatch() (*worker.Job, error)
+	AcceptResult(string, io.Reader) error
+	TriggerWork(EncodeVideoRequest) error
+}
+
+type HTTPHandler struct {
+	Service Service
 }
 
 // POST /work/
-func (h handler) dispatch(w http.ResponseWriter, req *http.Request) {
-	job, err := h.s.Dispatch()
-	if err == server.ErrDispatchTimeout {
+func (h HTTPHandler) Dispatch(w http.ResponseWriter, req *http.Request) {
+	job, err := h.Service.Dispatch()
+	if err == ErrDispatchTimeout {
 		w.WriteHeader(http.StatusNotModified)
 		return
 	}
 	if err != nil {
-		log.Println(err)
+		logErr(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 	defer job.Src.Close()
 
+	log.Println("[HTTP] starting stream")
 	req.Header.Set("Content-Type", "application/octet-stream")
 	worker.MarshalJobToHeader(job, w.Header())
 
@@ -42,8 +48,8 @@ func (h handler) dispatch(w http.ResponseWriter, req *http.Request) {
 }
 
 // POST /work/result
-func (h handler) acceptResult(w http.ResponseWriter, req *http.Request) {
-	log.Println("Result stream started")
+func (h HTTPHandler) AcceptResult(w http.ResponseWriter, req *http.Request) {
+	log.Println("[HTTP] accepting result")
 	content := req.Header.Get("Content-Disposition")
 	_, params, err := mime.ParseMediaType(content)
 	if err != nil {
@@ -52,8 +58,9 @@ func (h handler) acceptResult(w http.ResponseWriter, req *http.Request) {
 	fileName := params["filename"]
 	defer req.Body.Close()
 
-	err = h.s.AcceptResult(fileName, req.Body)
+	err = h.Service.AcceptResult(fileName, req.Body)
 	if err != nil {
+		logErr(err)
 		return
 	}
 
@@ -61,21 +68,21 @@ func (h handler) acceptResult(w http.ResponseWriter, req *http.Request) {
 }
 
 // POST /work/result
-func (h handler) trigger(w http.ResponseWriter, req *http.Request) {
+func (h HTTPHandler) Trigger(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 
-	var encoderReq server.EncodeVideoRequest
+	var encoderReq EncodeVideoRequest
 	dec := json.NewDecoder(req.Body)
 	err := dec.Decode(&encoderReq)
 	if err != nil {
-		log.Println(err)
+		logErr(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	err = h.s.TriggerWork(encoderReq)
+	err = h.Service.TriggerWork(encoderReq)
 	if err != nil {
-		log.Println(err)
+		logErr(err)
 		writeError(w, err.Error())
 		w.WriteHeader(http.StatusBadRequest)
 		return
@@ -84,7 +91,7 @@ func (h handler) trigger(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
-func writeError(w http.ResponseWriter, msg string) {
+func writeError(w io.Writer, msg string) {
 	b, err := json.Marshal(map[string]interface{}{
 		"error": msg,
 	})
@@ -93,6 +100,10 @@ func writeError(w http.ResponseWriter, msg string) {
 	}
 
 	if _, err = w.Write(b); err != nil {
-		log.Println(err)
+		logErr(err)
 	}
+}
+
+func logErr(err error) {
+	log.Printf("[HTTP] request error: %s ", err)
 }

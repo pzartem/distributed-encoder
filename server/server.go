@@ -7,6 +7,7 @@ import (
 	"log"
 	"math"
 	"path"
+	"path/filepath"
 	"time"
 
 	"distributed-encoder/transcoder"
@@ -84,7 +85,7 @@ func New(cfg Config) (*Server, error) {
 	if cfg.Store == nil {
 		return nil, fmt.Errorf("store is empty")
 	}
-	if cfg.DispatchTimeout != time.Duration(0) {
+	if cfg.DispatchTimeout == time.Duration(0) {
 		cfg.DispatchTimeout = 15 * time.Second
 	}
 
@@ -131,8 +132,9 @@ func (s *Server) Dispatch() (*worker.Job, error) {
 		if err != nil {
 			return nil, err
 		}
+
 		return &worker.Job{
-			TileName: fmt.Sprint(job.File, "_", job.TileNum),
+			TileName: generateTileName(job.File, job.TileNum),
 			Width:    job.Width,
 			Height:   job.Height,
 			Src:      stream,
@@ -140,6 +142,12 @@ func (s *Server) Dispatch() (*worker.Job, error) {
 	case <-time.After(s.dispatchTimeout):
 		return nil, ErrDispatchTimeout
 	}
+}
+
+func generateTileName(filename string, tileNum int) string {
+	extension := filepath.Ext(filename)
+	name := filename[0 : len(filename)-len(extension)]
+	return fmt.Sprint(name, "_tile_", tileNum)
 }
 
 // AcceptResult receives the result stream and saves it to the store

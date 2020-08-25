@@ -3,6 +3,7 @@ package worker
 import (
 	"bufio"
 	"context"
+	"fmt"
 	"io"
 	"log"
 
@@ -28,6 +29,12 @@ type Worker struct {
 
 // New creates a new worker
 func New(client Client, encoder VideoEncoder) (*Worker, error) {
+	if client == nil {
+		return nil, fmt.Errorf("client is empty")
+	}
+	if encoder == nil {
+		return nil, fmt.Errorf("encoder is empty")
+	}
 	w := Worker{
 		client:  client,
 		encoder: encoder,
@@ -62,10 +69,11 @@ func (w *Worker) work(job *Job) error {
 		return err
 	}
 	defer output.Close()
-	err = w.client.SendResult(job.TileName, bufio.NewReader(output))
+	err = w.client.SendResult(job.TileName+".ts", bufio.NewReader(output))
 	if err != nil {
 		return err
 	}
+	log.Println("Job is completed!")
 	return nil
 }
 

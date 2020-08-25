@@ -12,7 +12,7 @@ import (
 var (
 	encodeArgs = EncodeArgs{
 		Height: 30,
-		Width: 50,
+		Width:  50,
 	}
 
 	cropArgs = CropArgs{
@@ -57,7 +57,7 @@ func TestTranscoder_StreamTile(t *testing.T) {
 
 	result, err := ioutil.ReadAll(out)
 	require.NoError(t, err)
-	require.Equal(t, expectedOut + "\n", string(result))
+	require.Equal(t, expectedOut+"\n", string(result))
 }
 
 func Test_cropVideo(t *testing.T) {

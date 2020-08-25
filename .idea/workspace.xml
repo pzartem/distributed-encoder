@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f3a7d023-bb5e-48fd-85e8-3bdbbaf7bd99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deployment/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/worker/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/worker/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/worker/client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/worker/client_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/worker/worker.go" beforeDir="false" afterPath="$PROJECT_DIR$/worker/worker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,75 +71,75 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/ffmpeg" />
       <recent name="$PROJECT_DIR$/pkg" />
       <recent name="$PROJECT_DIR$/transcoder" />
-      <recent name="$PROJECT_DIR$/worker" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.go test distributed-encoder/worker">
-    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (2)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test distributed-encoder/server">
+    <configuration name="TestHTTPHandler_Dispatch in distributed-encoder/server (1)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="distributed-encoder" />
-      <working_directory value="$PROJECT_DIR$/worker" />
+      <working_directory value="$PROJECT_DIR$/server" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="distributed-encoder/worker" />
+      <package value="distributed-encoder/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
+      <pattern value="^\QTestHTTPHandler_Dispatch\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (3)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestHTTPHandler_Dispatch in distributed-encoder/server (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="distributed-encoder" />
-      <working_directory value="$PROJECT_DIR$/worker" />
+      <working_directory value="$PROJECT_DIR$/server" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="distributed-encoder/worker" />
+      <package value="distributed-encoder/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
+      <pattern value="^\QTestHTTPHandler_Dispatch\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (4)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestHTTPHandler_Dispatch in distributed-encoder/server (5)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="distributed-encoder" />
-      <working_directory value="$PROJECT_DIR$/worker" />
+      <working_directory value="$PROJECT_DIR$/server" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="distributed-encoder/worker" />
+      <package value="distributed-encoder/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
+      <pattern value="^\QTestHTTPHandler_Dispatch\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestHTTPClient_Subscribe in distributed-encoder/worker (5)" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestHTTPHandler_Dispatch in distributed-encoder/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="distributed-encoder" />
-      <working_directory value="$PROJECT_DIR$/worker" />
+      <working_directory value="$PROJECT_DIR$/server" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="distributed-encoder/worker" />
+      <package value="distributed-encoder/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QTestHTTPClient_Subscribe\E$" />
+      <pattern value="^\QTestHTTPHandler_Dispatch\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="go test distributed-encoder/worker" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test distributed-encoder/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="distributed-encoder" />
-      <working_directory value="$PROJECT_DIR$/worker" />
+      <working_directory value="$PROJECT_DIR$/server" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="distributed-encoder/worker" />
+      <package value="distributed-encoder/server" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.go test distributed-encoder/worker" />
-        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (5)" />
-        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (4)" />
-        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (3)" />
-        <item itemvalue="Go Test.TestHTTPClient_Subscribe in distributed-encoder/worker (2)" />
+        <item itemvalue="Go Test.go test distributed-encoder/server" />
+        <item itemvalue="Go Test.TestHTTPHandler_Dispatch in distributed-encoder/server (1)" />
+        <item itemvalue="Go Test.TestHTTPHandler_Dispatch in distributed-encoder/server" />
+        <item itemvalue="Go Test.TestHTTPHandler_Dispatch in distributed-encoder/server (5)" />
+        <item itemvalue="Go Test.TestHTTPHandler_Dispatch in distributed-encoder/server (4)" />
       </list>
     </recent_temporary>
   </component>
@@ -178,22 +174,26 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="661" y="354" width="605" height="387" key="#com.intellij.fileTypes.FileTypeChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1598216437132" />
-    <state width="1874" height="469" key="GridCell.Tab.0.bottom" timestamp="1598317304587">
+    <state x="768" y="273" width="374" height="558" key="#com.intellij.ide.util.MemberChooser" timestamp="1598345996869">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="469" key="GridCell.Tab.0.bottom/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
-    <state width="1874" height="469" key="GridCell.Tab.0.center" timestamp="1598317304587">
+    <state x="768" y="273" width="374" height="558" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1598345996869" />
+    <state width="1874" height="469" key="GridCell.Tab.0.bottom" timestamp="1598352573921">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="469" key="GridCell.Tab.0.center/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
-    <state width="1874" height="469" key="GridCell.Tab.0.left" timestamp="1598317304587">
+    <state width="1874" height="469" key="GridCell.Tab.0.bottom/0.28.1920.1052@0.28.1920.1052" timestamp="1598352573921" />
+    <state width="1874" height="469" key="GridCell.Tab.0.center" timestamp="1598352573921">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="469" key="GridCell.Tab.0.left/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
-    <state width="1874" height="469" key="GridCell.Tab.0.right" timestamp="1598317304587">
+    <state width="1874" height="469" key="GridCell.Tab.0.center/0.28.1920.1052@0.28.1920.1052" timestamp="1598352573921" />
+    <state width="1874" height="469" key="GridCell.Tab.0.left" timestamp="1598352573920">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state width="1874" height="469" key="GridCell.Tab.0.right/0.28.1920.1052@0.28.1920.1052" timestamp="1598317304587" />
+    <state width="1874" height="469" key="GridCell.Tab.0.left/0.28.1920.1052@0.28.1920.1052" timestamp="1598352573920" />
+    <state width="1874" height="469" key="GridCell.Tab.0.right" timestamp="1598352573921">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state width="1874" height="469" key="GridCell.Tab.0.right/0.28.1920.1052@0.28.1920.1052" timestamp="1598352573921" />
     <state width="1874" height="344" key="GridCell.Tab.1.bottom" timestamp="1598312358285">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
@@ -236,13 +236,24 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="652" y="108" width="615" height="891" key="find.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1598115560984" />
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1598315029226">
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup" timestamp="1598348408540">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1598315029226" />
+    <state x="623" y="260" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1598348408540" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/worker/worker_test.go</url>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/distributed_encoder$go_test_distributed_encoder_transcoder.out" NAME="go test distributed-encoder/transcoder Coverage Results" MODIFIED="1598313451988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/distributed_encoder$go_test_distributed_encoder_worker.out" NAME="go test distributed-encoder/worker Coverage Results" MODIFIED="1598317090764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/distributed_encoder$TestNew_in_distributed_encoder_worker.out" NAME="TestNew in distributed-encoder/worker Coverage Results" MODIFIED="1598344140294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/distributed_encoder$go_test_distributed_encoder_worker.out" NAME="go test distributed-encoder/worker Coverage Results" MODIFIED="1598345946782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

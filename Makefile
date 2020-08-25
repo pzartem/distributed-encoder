@@ -9,30 +9,33 @@ help: ## [GLOBAL] Print this help dialog
 		printf "\033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
-build: ## Build the file
+build: ## Build the go binary
 	@go build -o bin/$(CMD) cmd/$(CMD)/*.go
 
-run: build
+run: build ## runs go binary
 	@./bin/$(CMD) $(ARGS)
 
 TESTING_OPTS =
-test:
+test: ## runs tests
 	go test $(TESTING_OPTS) ./...
 
-lint:
+lint: ## runs linter
 	golangci-lint run
 
-docker-build:
+docker-build: vendor ## runs container build
 	docker build \
 		--build-arg cmd=$(CMD) \
 		-t $(CMD) \
 		-f $(DEPLOY_ROOT)/Dockerfile .
 
-compose-build:
+vendor: ## runs vendor
+	go mod vendor
+
+compose-build: vendor ## build compose images
 	docker-compose build
 
-compose-run:
+compose-run: ## starts compose with workes scale 4
 	docker-compose up --scale worker=4
 
-.PHONY: build run test lint docker-build
+.PHONY: build run test lint docker-build vendor compose-build compose-run
 

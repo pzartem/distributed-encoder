@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"log"
+	"os/signal"
+	"syscall"
 
 	"github.com/sethvargo/go-envconfig"
 
@@ -15,14 +17,27 @@ type EnvConfig struct {
 }
 
 func main() {
-	if err := realMain(); err != nil {
+	ctx, done := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+
+	defer func() {
+		done()
+		if r := recover(); r != nil {
+			log.Fatal("application panic", "panic", r)
+		}
+	}()
+
+	err := realMain(ctx)
+	done()
+
+	if err != nil {
 		log.Fatal(err)
 	}
+	log.Println("successful shutdown")
 }
 
-func realMain() error {
+func realMain(ctx context.Context) error {
 	var cfg EnvConfig
-	if err := envconfig.Process(context.Background(), &cfg); err != nil {
+	if err := envconfig.Process(ctx, &cfg); err != nil {
 		return err
 	}
 
@@ -37,7 +52,7 @@ func realMain() error {
 	}
 
 	log.Println("Starting client")
-	if err := w.Start(context.Background()); err != nil {
+	if err := w.Start(ctx); err != nil {
 		return err
 	}
 	return nil

@@ -94,7 +94,7 @@ func handle(res *http.Response, handlerFunc HandleJobFunc) error {
 }
 
 func (c *HTTPClient) poll() (*http.Response, error) {
-	req, err := http.NewRequest(http.MethodPost, c.pollEndpoint, nil)
+	req, err := http.NewRequest(http.MethodPost, c.pollEndpoint, http.NoBody)
 	if err != nil {
 		return nil, err
 	}
